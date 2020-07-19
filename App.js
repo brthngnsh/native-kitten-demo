@@ -1,13 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import myTheme from "./Component/theme/custom-theme";
+import * as eva from '@eva-design/eva';
+import login from './Component/login'
+import home from './Component/home'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <React.Fragment>
+    <ApplicationProvider {...eva} theme={{ ...eva.dark, ...myTheme }}>
+      <NavigationContainer>
+        <Stack.Navigator headerMode='none' initialRouteName="Login">
+          <Stack.Screen name="Login" component={login} />
+          <Stack.Screen name="Home" component={home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ApplicationProvider>
+  </React.Fragment>
   );
 }
 
