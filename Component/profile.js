@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {  Button, Icon, Layout, Avatar, Text } from '@ui-kitten/components';
-import { StyleSheet,View,ScrollView } from 'react-native';
+import { StyleSheet,View,ScrollView,Dimensions } from 'react-native';
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 class profile extends Component {
     state={
@@ -29,17 +31,37 @@ class profile extends Component {
                         <Text style>{this.state.Country.toLocaleUpperCase()}.</Text>
                     </Layout>
                 </Layout>
-                <Layout style={styles.registry}>
+                {/*<View style={styles.registry}>
                 <Icon style={styles.phoneicon} fill='#fbca03' name='phone'/>
-                <Layout style={{backgroundColor:'#42b0f5'}}>
+                <Layout style={{backgroundColor:'#ffffff'}}>
                     <Text style={styles.phoneno}>{this.state.phoneno}</Text>
                 </Layout>
-                </Layout>
-                <Layout style={styles.registry}>
+                </View>
+                <View style={styles.registry}>
                 <Icon style={styles.mailicon} fill='#fbca03' name='email'/>
-                <Layout style={{backgroundColor:'#42b0f5'}}>
+                <View style={{backgroundColor:'#ffffff'}}>
                     <Text style={styles.mail}>{this.state.email}</Text>
-                </Layout>
+                </View>
+                </View>*/}
+                <Layout style={styles.body}>
+                    <Layout style={styles.phone}>
+                        <Icon style={styles.phoneicon} fill='#006666' name='phone'/>
+                        <Layout style={{backgroundColor:'#ffffff'}}>
+                            <Text style={styles.phoneno}>{this.state.phoneno}</Text>
+                        </Layout>
+                    </Layout>
+                    <Layout style={styles.mail}>
+                        <Icon style={styles.mailicon} fill='#006666' name='email'/>
+                        <Layout style={{backgroundColor:'#ffffff'}}>
+                            <Text style={styles.maild}>{this.state.email}</Text>
+                        </Layout>
+                    </Layout>
+                    <Layout style={styles.deat}>
+                        <Icon style={styles.addricon} fill='#006666' name='home'/>
+                        <Layout style={{backgroundColor:'#ffffff'}}>
+                            <Text style={styles.addr}>{this.state.address}</Text>
+                        </Layout>
+                    </Layout>
                 </Layout>
             </Layout>
 
@@ -63,24 +85,63 @@ const styles = StyleSheet.create({
     registry:{
         flex:1,
         flexDirection: 'row',
-        backgroundColor: '#42b0f5',
+        backgroundColor: '#ffffff',
         marginTop:-220,
         marginRight:-50,
         
     },
     phoneno:{
         fontSize:20,
-        alignSelf:'center'
+        alignSelf:'center',
+        color:'grey',
+        marginHorizontal:30
     },
-    mail:{
+    phone:{
+        backgroundColor:'#ffffff',
+        flex:1,
+        flexDirection:'row',
+        marginVertical:50,
+        marginHorizontal:20,
+        marginBottom:20
+    },
+    mail : {
+        flex:1,
+        backgroundColor:'#ffffff',
+        flexDirection:'row',
+        marginHorizontal:20,
+        marginVertical:20,
+        marginBottom:20
+    },
+    deat : {
+        flex:1,
+        backgroundColor:'#ffffff',
+        flexDirection:'row',
+        marginHorizontal:20,
+        marginVertical:20,
+        marginBottom:50
+    },
+    maild:{
         fontSize:20,
-        alignSelf:'center'
+        alignSelf:'center',
+        color:'grey',
+        marginHorizontal:30
+    },
+    addr:{
+        fontSize:20,
+        alignSelf:'center',
+        color:'grey',
+        marginHorizontal:30
     },
     head:{
-        backgroundColor: '#42b0f5',
+        backgroundColor: '#ffffff',
         height:210,
     },
-
+    body:{
+        backgroundColor:'#ffffff',
+        alignSelf:'center',
+        height:330,
+        width:screenWidth
+},
     avatar: {
         width: 130,
         height: 130,
@@ -92,26 +153,28 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         position: 'absolute',
       },
-      inputText:{
+    inputText:{
         height:60,
         color:"white",
         backgroundColor: 'transparent',
       },
-      icon: {
+    icon: {
         width: 32,
         height: 32,
         marginLeft: -40,
         fontSize: 12
       },
-      phoneicon: {
+    phoneicon: {
         width: 32,
         height: 32,
-        marginLeft: -115,
       },
-      mailicon: {
+    mailicon: {
         width: 32,
         height: 32,
-        marginLeft: -65,
+      },
+    addricon: {
+        width: 32,
+        height: 32,
       },
   });
   
